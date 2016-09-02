@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+        <h4>下面选择你想看的</h4>
+        <li><a href="{{ url_for('.first') }}">上一篇</a></li>
+        <li><a href="{{ url_for('.pytest2') }}">下一篇</a></li>
+        <h3>数据类型的可变与不可变</h3>
+        <ul>
+            <li>不可变类型：int,string,tuple</li>
+            <li>可变类型：list,tuple,dict</li>
+        </ul>
+        <pre>
+        <code class="code">
+
+>>> a = "haha"
+>>> id(a)
+140507461886192
+>>> a = "hahaha"
+>>> id(a)
+140507461886144
+>>>
+>>> b = [1,2,3]
+>>> id(b)
+140507461748712
+>>> b.append(4)
+>>> b
+[1, 2, 3, 4]
+>>> id(b)
+140507461748712
+>>>
+        </code>
+        <p>由上面可以看出，字符串string是不可变型，因为改变了字符串的字符其唯一辨识符也相应发生变化；列表list是可变型，因为列表中增加了一个数字4，但其唯一辨识符没有发生
+改变。</p>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

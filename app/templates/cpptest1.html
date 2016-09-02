@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+        <h4>下面选择你想看的</h4>
+        <li><a href="{{ url_for('.index') }}">首页</a></li>
+
+        <li><a href="{{ url_for('.pytest3') }}">上一篇</a></li>
+        <li><a href="#">下一篇</a></li>
+        <h2>c++课后练习题1：百钱百雉</h2>
+        <p>中国古代数学中经典的“百钱百雉”问题：公元5世纪末，我国古代数学家张丘建
+在《算经》中提出了如下问题：鸡翁一值钱五，鸡母一值钱三，鸡雏三值钱一。凡百钱买百
+鸡，问鸡翁、母、雏各几何？</p>
+        <h4>解题基本思想</h4>
+        <p>分别使用变量cock、hens、chick表示鸡公、鸡母、鸡雏的数量，然后采用穷举
+法找出满足条件((5*cock+3*hens+chick/3==100) && (cock+hens+chick==100))的所有组合
+。</p>
+        <pre>
+        <code class="code">
+#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+using namespace std;
+void main()
+{
+
+    for(int cock=1;cock<=20;cock++)
+    for(int hens=1;hens<=33;hens++)
+    for(int chick=3;chick<=99;chick=chick+3)
+    if((5*cock+3*hens+chick/3==100) && (cock+hens+chick==100))
+        cout&lt;&lt;cock&lt;&lt;" ,"&lt;&lt;hens&lt;&lt;" ,"&lt;&lt;chick&lt;&lt;endl;
+        system("pause");
+}
+        </code>
+        </pre>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

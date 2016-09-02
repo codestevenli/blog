@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+	    <h4>下面选择你想看的</h4>
+        <li><a href="{{ url_for('.index') }}">上一篇</a></li>
+        <li><a href="{{ url_for('.pytest1') }}">下一篇</a></li>
+
+        <h2>这是我的第一条博客</h2>
+        <p>接下来我将从这几方面:1.STEQUIN名字的由来;2.博客的内容类型来说一下</p>
+        <h3>名字的由来</h3>
+        <p>STE是我的英文名字Steven的前三个字母，QUIN来
+自一部我很喜欢的一部美剧《绿箭侠》的主角奥利弗·奎恩(Oliver Queen)，当然我没有用queen，而只是选择了类似的音符。</p>
+        <h3>博客接下来的内容</h3>
+        <p>基本会以个人笔记为主，也会有一些生活点滴，有意思的转载
+等等。先写到这里</p>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

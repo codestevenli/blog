@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+{% if current_user.is_anonymous %}
+    <div class="index-header">
+
+        <h2>Hello!我是Steven，欢迎来到我的个人博客！</h2>
+        <a href="{{ url_for('auth.register') }}">如果你喜欢，你可以选择加入我们！</a>
+    </div>
+
+    <blockquote>
+    <div class="content">
+        <h4>想看看我的博客吗</h4>
+        <ul>
+            <li><a href="{{ url_for('.first') }}">由此进入</a><li>
+            <li><a href="{{ url_for('.pytest1') }}">数据类型的可变与不可变</a><li>
+            <li><a href="{{ url_for('.pytest2') }}">python中数据类型转换</a><li>
+    </div>
+
+    </blockquote>
+
+
+
+{% endif %}
+<div class="post-tabs">
+    {% if current_user.is_authenticated %}
+    <ul class="nav nav-tabs">
+        <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">所有文章</a></li>
+
+        <li{% if show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">关注者的文章</a></li>
+    </ul>
+    {% endif %}
+    {% include '_posts.html' %}
+</div>
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

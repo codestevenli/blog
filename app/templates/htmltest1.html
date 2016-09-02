@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+        <h4>下面选择你想看的</h4>
+        <li><a href="{{ url_for('.index') }}">首页</a></li>
+        <li><a href="{{ url_for('.cpptest1') }}">上一篇</a></li>
+        <li><a href="#">下一篇</a></li>
+        <h2>html中的转义字符问题</h2>
+        <p>在引用源码的时候，比如c++中的“&lt;&lt;”,为了防止源码引用出现不完整，>我们需要对其进行转义</p>
+        比如我们想实现这一句
+        <pre>
+        <code class="code">
+cout&lt;&lt;a&lt;&lt;endl;
+        </code>
+        </pre>
+        我们在html应该这么改
+         <pre>
+        <code class="code">
+&lt;code&gt;
+cout&amp;lt;&amp;lt;a&amp;lt;&amp;lt;endl;
+&lt;/code&gt;
+
+        </code>
+        </pre>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

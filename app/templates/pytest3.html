@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+        <h4>下面选择你想看的</h4>
+        <li><a href="{{ url_for('.index') }}">首页</a></li>
+
+        <li><a href="{{ url_for('.pytest2') }}">上一篇</a></li>
+        <li><a href="{{ url_for('.cpptest1') }}">下一篇</a></li>
+        <h2>python中的编码问题</h2>
+        <p>python默认的文件编码是ascii，其中a是american的意思，是方便美国人使用>的，如果你要在python中写中文，一定要在文件开头加上以下这句
+        </p>
+        <pre>
+        <code class="code">
+#coding:utf-8
+        </code>
+        </pre>
+        <p>unicode是计算机科学领域里的一项业界标准,包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，因为unicode只是一套标准所以会有很
+多实现方式，所以utf8就是其中一种实现方式，类似的还有utf16</p>
+        <pre>
+		 <code class="code">
+In [1]: a = "1234"
+
+In [2]: len(a)
+Out[2]: 4
+
+In [3]: a ="李"
+
+In [4]: len(a)
+Out[4]: 3
+是因为默认是ascii，是3个字节
+        </code>
+        </pre>
+        <p>如果要是len(a)为1，可用以下方法</p>
+
+        <pre>
+        <code class="code">
+In [5]: a=u"李"
+
+In [6]: len(a)
+Out[6]: 1
+或者
+In [10]: a="李"
+
+In [11]: len(a.decode('utf-8'))
+Out[11]: 1
+        </code>
+        </pre>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+

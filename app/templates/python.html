@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+        <h4>python</h4>
+        <ul>
+
+            <li><a href="{{ url_for('.pytest1') }}">数据类型的可变与不可变</a><li>
+            <li><a href="{{ url_for('.pytest2') }}">python中数据类型转换</a><li>
+            <li><a href="{{ url_for('.pytest3') }}">python中编码问题</a><li>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

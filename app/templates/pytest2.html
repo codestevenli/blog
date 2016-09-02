@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+        <h4>下面选择你想看的</h4>
+        <li><a href="{{ url_for('.pytest1') }}">上一篇</a></li>
+        <li><a href="#">下一篇</a></li>
+        <h2>python数据类型转换</h2>
+        <p>
+当一个变量被定义成字符串的时候它就失去了一个动态性，当它要与其他类型合作的时候，就需要进行数据类型转换</p>
+        <pre>
+        <code class="code">
+In [1]: a = "1234"
+
+In [2]: a + 1
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-2-a1bd27f4633f> in <module>()
+----> 1 a + 1
+
+TypeError: cannot concatenate 'str' and 'int' objects
+
+In [3]: int(a) + 1
+Out[3]: 1235
+
+        </code>
+        </pre>
+        <p>
+当字符串中有字母时，python中不会像PHP中将有字母的字符串转换成整型数据0，而是无法进行合作</p>
+        <pre>
+        <code class="code">
+In [4]: a = "12a"
+
+In [5]: int(a) + 1
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-5-11e4b177c169> in <module>()
+----> 1 int(a) + 1
+
+ValueError: invalid literal for int() with base 10: '12a'
+        </code>
+        </pre>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+    <div class="content">
+
+            <li><a href="{{ url_for('.index') }}">首页</a></li>
+            <h4>html</h4>
+            <li><a href="{{ url_for('.htmltest1') }}">html中的转义字符问题</a></li>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
